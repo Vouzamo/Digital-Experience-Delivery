@@ -6,7 +6,7 @@ using System;
 
 namespace CMS.Delivery
 {
-    public interface IComponentProvider
+    public interface IComponentProvider : IProvider
     {
         bool TryGetComponent(Guid id, IContext context, out IComponent component);
     }
@@ -24,6 +24,8 @@ namespace CMS.Delivery
 
     public class DefaultComponentProvider : IComponentProvider
     {
+        public Guid Id => new Guid("5196b1ff-2c12-4833-bb79-a47c3a5e09cc");
+
         protected IHostingEnvironment HostingEnvironment { get; set; }
 
         public DefaultComponentProvider(IHostingEnvironment hostingEnvironment)

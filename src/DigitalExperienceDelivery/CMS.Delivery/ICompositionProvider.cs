@@ -7,12 +7,12 @@ using System.Collections.Generic;
 
 namespace CMS.Delivery
 {
-    public interface ICompositionResolver
+    public interface ICompositionResolver : IProvider
     {
         bool TryResolveCompositionId(string uri, IContext context, out Guid id);
     }
 
-    public interface ICompositionProvider
+    public interface ICompositionProvider : IProvider
     {
         bool TryGetComposition(Guid id, IContext context, out IComposition composition);
     }
@@ -52,6 +52,8 @@ namespace CMS.Delivery
 
     public class DefaultCompositionProviderResolver : ICompositionProvider, ICompositionResolver
     {
+        public Guid Id => new Guid("00804bcd-d975-4fb6-aeba-7e7745f33996");
+
         protected IHostingEnvironment HostingEnvironment { get; }
 
         public DefaultCompositionProviderResolver(IHostingEnvironment hostingEnvironment)

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CMS.Delivery
 {
@@ -23,7 +21,7 @@ namespace CMS.Delivery
         Guid Id { get; }
     }
 
-    public interface IContextProvider
+    public interface IContextProvider : IProvider
     {
         IContext ResolveContext(HttpRequest request);
     }
@@ -40,6 +38,8 @@ namespace CMS.Delivery
 
     public class DefaultContextProvider : IContextProvider
     {
+        public Guid Id => new Guid("02325b0e-4fbc-4a83-bb4b-89a4d9739141");
+
         public IContext ResolveContext(HttpRequest request)
         {
             return new DefaultContext()
