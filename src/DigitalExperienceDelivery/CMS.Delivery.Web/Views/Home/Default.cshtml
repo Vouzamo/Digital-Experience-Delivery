@@ -1,0 +1,12 @@
+﻿@model IComposition
+
+@{ 
+    Layout = "_Layout";
+}
+
+<div class="page">
+    @foreach (var rendering in Model.Renderings)
+    {
+        @Html.Partial("_Rendering", rendering)
+    }
+</div>

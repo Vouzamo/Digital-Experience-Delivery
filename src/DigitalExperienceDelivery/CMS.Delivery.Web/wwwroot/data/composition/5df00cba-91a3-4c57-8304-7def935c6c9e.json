@@ -1,0 +1,54 @@
+{
+    "id": "1d2c004a-4b5a-462a-8a85-e21a8ac938c6",
+    "template": {
+        "id": "b78b11f2-1ecc-4705-950b-159987e5d980",
+        "data": {
+            "view": "Default"
+        }
+    },
+    "renderings": [
+        {
+            "componentId": "28cfebfa-14d3-41a4-8098-369f3bb09926",
+            "template": {
+                "id": "12dc68a7-f363-4541-8252-d4ccd5979b89",
+                "data": {
+                    "viewComponent": "Section"
+                }
+            },
+            "renderings": [
+                {
+                    "componentId": "944e83cd-ff79-43ea-871b-4a0b6fe1ee17",
+                    "template": {
+                        "id": "12dc68a7-f363-4541-8252-d4ccd5979b89",
+                        "data": {
+                            "viewComponent": "Carousel"
+                        }
+                    },
+                    "renderings": [
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "componentId": "07887667-e968-4043-838e-2508bb62444d",
+            "template": {
+                "id": "12dc68a7-f363-4541-8252-d4ccd5979b89",
+                "data": {
+                    "viewComponent": "Section"
+                }
+            },
+            "renderings": []
+        },
+        {
+            "componentId": "4dbd65c9-99f9-4a65-9817-3f1ec796b6e0",
+            "template": {
+                "id": "12dc68a7-f363-4541-8252-d4ccd5979b89",
+                "data": {
+                    "viewComponent": "Section"
+                }
+            },
+            "renderings": []
+        }
+    ]
+}

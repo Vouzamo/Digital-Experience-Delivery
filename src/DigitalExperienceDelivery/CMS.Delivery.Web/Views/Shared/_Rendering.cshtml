@@ -1,0 +1,8 @@
+﻿@model IRendering
+
+@{ 
+    var template = Model.Template.Data<RenderingTemplateModel>();
+}
+
+<!-- Rendering component @Model.ComponentId with template @Model.Template.Id -->
+@await Component.InvokeAsync(template.ViewComponent, Model)

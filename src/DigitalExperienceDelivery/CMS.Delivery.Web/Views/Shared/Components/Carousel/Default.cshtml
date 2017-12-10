@@ -1,0 +1,14 @@
+﻿@model CarouselModel
+
+<div class="carousel">
+    <h3>@Model.Title</h3>
+    <ul class="slides">
+        @foreach (var slide in Model.Slides)
+        {
+            <li>
+                <h4>@slide.Title</h4>
+                <p>@slide.Body</p>
+            </li>
+        }
+    </ul>
+</div>
