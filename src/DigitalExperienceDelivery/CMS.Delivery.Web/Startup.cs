@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using CMS.Delivery.Providers;
+using CMS.Delivery.Web.Providers;
 
 namespace CMS.Delivery.Web
 {
@@ -31,9 +33,10 @@ namespace CMS.Delivery.Web
             services.AddMvc();
 
             services.AddTransient<IContextProvider, DefaultContextProvider>();
-            services.AddSingleton<ICompositionProvider, DefaultCompositionProviderResolver>();
-            services.AddSingleton<ICompositionResolver, DefaultCompositionProviderResolver>();
-            services.AddSingleton<IComponentProvider, DefaultComponentProvider>();
+            services.AddSingleton<ICompositionProvider, DistributedCompositionProvider>();
+            services.AddSingleton<ICompositionResolver, DefaultCompositionResolver>();
+            services.AddSingleton<ILayoutProvider, DefaultLayoutProvider>();
+            services.AddSingleton<IContentProvider, DefaultContentProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

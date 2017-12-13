@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CMS.Delivery
 {
-    public interface IRendering
+    public interface IRendering : IHasData, IHasTemplate, IHasRenderings
     {
         Guid ComponentId { get; }
-        ITemplate Template { get; }
-        IEnumerable<IRendering> Renderings { get; }
+    }
+
+    public interface IEmbeddedRendering : IHasData, IHasContent, IHasTemplate, IHasEmbeddedRenderings
+    {
+
     }
 }

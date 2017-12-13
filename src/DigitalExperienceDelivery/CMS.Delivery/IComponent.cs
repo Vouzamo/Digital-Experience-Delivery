@@ -9,11 +9,11 @@ namespace CMS.Delivery
 
     public interface IComponentModel
     {
-        IRendering Rendering { get; set; }
+        IEmbeddedRendering Rendering { get; set; }
     }
 
     public class ComponentModel : IComponentModel
     {
-        public IRendering Rendering { get; set; }
+        public IEmbeddedRendering Rendering { get; set; }
     }
 }
