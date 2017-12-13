@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.26711.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS.Delivery.Web", "CMS.Delivery.Web\CMS.Delivery.Web.csproj", "{F1EBF058-301C-410D-84A0-119AA610BCDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Delivery", "CMS.Delivery\CMS.Delivery.csproj", "{C0B0DA88-CCAB-4896-8D3C-BEEE8CF3268A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS.Delivery", "CMS.Delivery\CMS.Delivery.csproj", "{C0B0DA88-CCAB-4896-8D3C-BEEE8CF3268A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
