@@ -2,11 +2,6 @@
 
 namespace CMS.Delivery
 {
-    public interface IComponent : IHasData
-    {
-        Guid Id { get; }
-    }
-
     public interface IComponentModel
     {
         IEmbeddedRendering Rendering { get; set; }

@@ -10,7 +10,7 @@ namespace CMS.Delivery
 {
     public interface IComponentProvider : IProvider
     {
-        bool TryGetComponent(Guid id, IContext context, out IComponent component);
+        bool TryGetComponent(Guid id, IContext context, out IContent content);
     }
 
     public class DefaultContent : IContent

@@ -42,6 +42,8 @@ namespace CMS.Delivery.Web.Providers
         protected ILayoutProvider LayoutProvider { get; set; }
         protected IContentProvider ContentProvider { get; set; }
 
+        public Guid Id => new Guid("a74a98fd-c649-42f8-a4f0-d515f8b91101");
+
         public DistributedCompositionProvider(ILayoutProvider layoutProvider, IContentProvider contentProvider)
         {
             LayoutProvider = layoutProvider;

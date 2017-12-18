@@ -19,6 +19,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CMS.Delivery.Providers.DD4T\CMS.Delivery.Providers.DD4T.csproj" />
     <ProjectReference Include="..\CMS.Delivery\CMS.Delivery.csproj" />
   </ItemGroup>
 
