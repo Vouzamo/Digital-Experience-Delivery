@@ -46,7 +46,7 @@ namespace CMS.Delivery
             {
                 Id = Guid.NewGuid(),
                 LanguageCode = "en",
-                CountryCode = "US",
+                CountryCode = "GB",
                 UserAgent = string.Empty,
                 Width = 800,
                 Height = 600

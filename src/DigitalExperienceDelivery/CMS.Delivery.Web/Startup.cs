@@ -36,9 +36,9 @@ namespace CMS.Delivery.Web
             services.AddSingleton<IIdentityManager, IdentityManager>();
             services.AddTransient<IContextProvider, DefaultContextProvider>();
 
-            services.AddSingleton<ICompositionResolver, DefaultCompositionResolver>();
-
+            services.AddSingleton<ICompositionResolver, DD4TCompositionResolverProvider>();
             services.AddSingleton<ICompositionProvider, DD4TCompositionResolverProvider>();
+
             //services.AddSingleton<ILayoutProvider, DefaultLayoutProvider>();
             //services.AddSingleton<IContentProvider, DefaultContentProvider>();
         }
@@ -69,6 +69,9 @@ namespace CMS.Delivery.Web
                     defaults: new { controller = "Home", action = "Index" }
                 );
             });
+
+            var identityManager = app.ApplicationServices.GetService<IIdentityManager>();
+            identityManager.Seed();
         }
     }
 }

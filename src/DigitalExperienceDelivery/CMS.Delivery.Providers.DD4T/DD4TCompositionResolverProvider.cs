@@ -5,6 +5,8 @@ using IComponent = DD4T.ContentModel.IComponent;
 using Refit;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using DD4T.Serialization;
 
 namespace CMS.Delivery.Providers.DD4T
 {
@@ -18,14 +20,18 @@ namespace CMS.Delivery.Providers.DD4T
         public DD4TCompositionResolverProvider(IIdentityManager identityManager)
         {
             IdentityManager = identityManager;
-            Client = RestService.For<IDD4TContract>("https://api.dd4t.com");
+            Client = RestService.For<IDD4TContract>("http://dd4t.samplesite.com");
         }
 
         public bool TryResolveCompositionId(string uri, IContext context, out Guid id)
         {
             try
             {
-                id = Client.ResolveCompositionId(uri, context).Result;
+                uri = uri ?? string.Empty;
+
+                var externalId = Client.FindPageId(uri, context).Result;
+
+                id = IdentityManager.ToFrameworkId(this, externalId);
 
                 return id != Guid.Empty;
             }
@@ -40,7 +46,11 @@ namespace CMS.Delivery.Providers.DD4T
         {
             var pageId = IdentityManager.FromFrameworkId(this, id);
 
-            var page = Client.GetPageById(pageId, context).Result;
+            var pageJson = Client.GetPageById(pageId, context).Result;
+
+            var serializer = new JSONSerializerService();
+
+            var page = serializer.Deserialize<Page>(pageJson);
 
             return ConvertPageToComposition(page);
 
@@ -91,7 +101,7 @@ namespace CMS.Delivery.Providers.DD4T
             var id = IdentityManager.ToFrameworkId(this, pageTemplate.Id.ToString());
 
             // Page Template Metadata fields
-            var data = string.Empty;
+            var data = "{\"View\":\"Default\"}";
 
             return new Template(id, data);
         }

@@ -1,0 +1,499 @@
+﻿<edmx:Edmx xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+  <edmx:DataServices m:DataServiceVersion="1.0">
+    <Schema xmlns="http://schemas.microsoft.com/ado/2007/05/edm" Namespace="Tridion.ContentDelivery">
+      <EntityType Name="Binary">
+        <Key>
+          <PropertyRef Name="BinaryId" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="Binary_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Binary_Binary_Publication" ToRole="Publication_Binary" />
+        <NavigationProperty FromRole="Binary_BinaryVariant" Name="BinaryVariants" Relationship="Tridion.ContentDelivery.Binary_BinaryVariant_BinaryVariant_Binary" ToRole="BinaryVariant_Binary" />
+        <Property Name="BinaryId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Type" Type="Edm.String" Nullable="false" />
+      </EntityType>
+      <EntityType m:hasStream="true" Name="BinaryContent">
+        <Key>
+          <PropertyRef Name="BinaryId" />
+          <PropertyRef Name="PublicationId" />
+          <PropertyRef Name="VariantId" />
+        </Key>
+        <Property Name="BinaryId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VariantId" Type="Edm.String" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="BinaryVariant">
+        <Key>
+          <PropertyRef Name="BinaryId" />
+          <PropertyRef Name="PublicationId" />
+          <PropertyRef Name="VariantId" />
+        </Key>
+        <NavigationProperty FromRole="BinaryVariant_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_BinaryVariant_BinaryVariant_Publication" ToRole="Publication_BinaryVariant" />
+        <NavigationProperty FromRole="BinaryVariant_Binary" Name="Binary" Relationship="Tridion.ContentDelivery.Binary_BinaryVariant_BinaryVariant_Binary" ToRole="Binary_BinaryVariant" />
+        <Property Name="BinaryId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" />
+        <Property Name="IsComponent" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Path" Type="Edm.String" Nullable="false" />
+        <Property Name="URLPath" Type="Edm.String" Nullable="false" />
+        <Property Name="VariantId" Type="Edm.String" Nullable="false" />
+        <Property Name="Type" Type="Edm.String" Nullable="false" />
+        <Property Name="StructureGroupId" Type="Edm.String" Nullable="false" />
+      </EntityType>
+      <EntityType Name="Component">
+        <Key>
+          <PropertyRef Name="ItemId" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="Component_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Component_Component_Publication" ToRole="Publication_Component" />
+        <NavigationProperty FromRole="Component_Schema" Name="Schema" Relationship="Tridion.ContentDelivery.Schema_Component_Component_Schema" ToRole="Schema_Component" />
+        <NavigationProperty FromRole="Component_ComponentPresentation" Name="ComponentPresentations" Relationship="Tridion.ContentDelivery.Component_ComponentPresentation_ComponentPresentation_Component" ToRole="ComponentPresentation_Component" />
+        <NavigationProperty FromRole="Component_CustomMeta" Name="CustomMetas" Relationship="Tridion.ContentDelivery.Component_CustomMeta_CustomMeta_Component" ToRole="CustomMeta_Component" />
+        <NavigationProperty FromRole="Component_Keyword" Name="Keywords" Relationship="Tridion.ContentDelivery.Keyword_Component_Component_Keyword" ToRole="Keyword_Component" />
+        <Property Name="SchemaId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Multimedia" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" />
+        <Property Name="ItemId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="MajorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="MinorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="OwningPublication" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CreationDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="InitialPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="LastPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Author" Type="Edm.String" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <EntityType Name="ComponentPresentation">
+        <Key>
+          <PropertyRef Name="PublicationId" />
+          <PropertyRef Name="ComponentId" />
+          <PropertyRef Name="TemplateId" />
+        </Key>
+        <NavigationProperty FromRole="ComponentPresentation_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_ComponentPresentation_ComponentPresentation_Publication" ToRole="Publication_ComponentPresentation" />
+        <NavigationProperty FromRole="ComponentPresentation_Component" Name="Component" Relationship="Tridion.ContentDelivery.Component_ComponentPresentation_ComponentPresentation_Component" ToRole="Component_ComponentPresentation" />
+        <NavigationProperty FromRole="ComponentPresentation_Template" Name="Template" Relationship="Tridion.ContentDelivery.Template_ComponentPresentation_ComponentPresentation_Template" ToRole="Template_ComponentPresentation" />
+        <NavigationProperty FromRole="ComponentPresentation_Page" Name="Pages" Relationship="Tridion.ContentDelivery.Page_ComponentPresentation_ComponentPresentation_Page" ToRole="Page_ComponentPresentation" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ComponentId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TemplateId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PresentationContent" Type="Edm.String" Nullable="false" />
+        <Property Name="OutputFormat" Type="Edm.String" Nullable="false" />
+        <Property Name="Encoding" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="CustomMeta">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <NavigationProperty FromRole="CustomMeta_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_CustomMeta_CustomMeta_Publication" ToRole="Publication_CustomMeta" />
+        <NavigationProperty FromRole="CustomMeta_Page" Name="Page" Relationship="Tridion.ContentDelivery.Page_CustomMeta_CustomMeta_Page" ToRole="Page_CustomMeta" />
+        <NavigationProperty FromRole="CustomMeta_Component" Name="Component" Relationship="Tridion.ContentDelivery.Component_CustomMeta_CustomMeta_Component" ToRole="Component_CustomMeta" />
+        <NavigationProperty FromRole="CustomMeta_Keyword" Name="Keyword" Relationship="Tridion.ContentDelivery.Keyword_CustomMeta_CustomMeta_Keyword" ToRole="Keyword_CustomMeta" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ItemId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ItemType" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="KeyName" Type="Edm.String" Nullable="false" />
+        <Property Name="StringValue" Type="Edm.String" Nullable="true" />
+        <Property Name="FloatValue" Type="Edm.Decimal" Nullable="true" />
+        <Property Name="DateValue" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <EntityType Name="Keyword">
+        <Key>
+          <PropertyRef Name="Id" />
+          <PropertyRef Name="PublicationId" />
+          <PropertyRef Name="TaxonomyId" />
+        </Key>
+        <NavigationProperty FromRole="Keyword_Children" Name="Children" Relationship="Tridion.ContentDelivery.Keyword_Children_Children_Keyword" ToRole="Children_Keyword" />
+        <NavigationProperty FromRole="Keyword_Parent" Name="Parent" Relationship="Tridion.ContentDelivery.Keyword_Parent_Parent_Keyword" ToRole="Parent_Keyword" />
+        <NavigationProperty FromRole="Keyword_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Keyword_Keyword_Publication" ToRole="Publication_Keyword" />
+        <NavigationProperty FromRole="Keyword_CustomMeta" Name="CustomMetas" Relationship="Tridion.ContentDelivery.Keyword_CustomMeta_CustomMeta_Keyword" ToRole="CustomMeta_Keyword" />
+        <NavigationProperty FromRole="Keyword_KeywordRelation" Name="KeywordRelations" Relationship="Tridion.ContentDelivery.Keyword_KeywordRelation_KeywordRelation_Keyword" ToRole="KeywordRelation_Keyword" />
+        <NavigationProperty FromRole="Keyword_Component" Name="Components" Relationship="Tridion.ContentDelivery.Keyword_Component_Component_Keyword" ToRole="Component_Keyword" />
+        <NavigationProperty FromRole="Keyword_Page" Name="Pages" Relationship="Tridion.ContentDelivery.Keyword_Page_Page_Keyword" ToRole="Page_Keyword" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TaxonomyId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="true" />
+        <Property Name="HasChildren" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Abstract" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Navigable" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Key" Type="Edm.String" Nullable="true" />
+        <Property Name="Depth" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Left" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Right" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ItemType" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TotalRelatedItems" Type="Edm.Int32" Nullable="true" />
+        <Property Name="IsUsedForIdentification" Type="Edm.Boolean" Nullable="true" />
+      </EntityType>
+      <EntityType Name="StructureGroup">
+        <Key>
+          <PropertyRef Name="Id" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="StructureGroup_Children" Name="Children" Relationship="Tridion.ContentDelivery.StructureGroup_Children_Children_StructureGroup" ToRole="Children_StructureGroup" />
+        <NavigationProperty FromRole="StructureGroup_Parent" Name="Parent" Relationship="Tridion.ContentDelivery.StructureGroup_Parent_Parent_StructureGroup" ToRole="Parent_StructureGroup" />
+        <NavigationProperty FromRole="StructureGroup_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_StructureGroup_StructureGroup_Publication" ToRole="Publication_StructureGroup" />
+        <NavigationProperty FromRole="StructureGroup_Page" Name="Pages" Relationship="Tridion.ContentDelivery.StructureGroup_Page_Page_StructureGroup" ToRole="Page_StructureGroup" />
+        <NavigationProperty FromRole="StructureGroup_KeywordRelation" Name="KeywordRelations" Relationship="Tridion.ContentDelivery.StructureGroup_KeywordRelation_KeywordRelation_StructureGroup" ToRole="KeywordRelation_StructureGroup" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" />
+        <Property Name="Directory" Type="Edm.String" Nullable="false" />
+        <Property Name="Depth" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="KeywordRelation">
+        <Key>
+          <PropertyRef Name="NodeId" />
+          <PropertyRef Name="KeywordToId" />
+        </Key>
+        <NavigationProperty FromRole="KeywordRelation_Keyword" Name="Keyword" Relationship="Tridion.ContentDelivery.Keyword_KeywordRelation_KeywordRelation_Keyword" ToRole="Keyword_KeywordRelation" />
+        <NavigationProperty FromRole="KeywordRelation_StructureGroup" Name="StructureGroup" Relationship="Tridion.ContentDelivery.StructureGroup_KeywordRelation_KeywordRelation_StructureGroup" ToRole="StructureGroup_KeywordRelation" />
+        <Property Name="NodeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="KeywordToId" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="PageContent">
+        <Key>
+          <PropertyRef Name="PageId" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="PageContent_Page" Name="Page" Relationship="Tridion.ContentDelivery.Page_PageContent_PageContent_Page" ToRole="Page_PageContent" />
+        <NavigationProperty FromRole="PageContent_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_PageContent_PageContent_Publication" ToRole="Publication_PageContent" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PageId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Content" Type="Edm.String" Nullable="true" />
+        <Property Name="CharSet" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="Page">
+        <Key>
+          <PropertyRef Name="ItemId" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="Page_PageContent" Name="PageContent" Relationship="Tridion.ContentDelivery.Page_PageContent_PageContent_Page" ToRole="PageContent_Page" />
+        <NavigationProperty FromRole="Page_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Page_Page_Publication" ToRole="Publication_Page" />
+        <NavigationProperty FromRole="Page_CustomMeta" Name="CustomMetas" Relationship="Tridion.ContentDelivery.Page_CustomMeta_CustomMeta_Page" ToRole="CustomMeta_Page" />
+        <NavigationProperty FromRole="Page_StructureGroup" Name="StructureGroup" Relationship="Tridion.ContentDelivery.StructureGroup_Page_Page_StructureGroup" ToRole="StructureGroup_Page" />
+        <NavigationProperty FromRole="Page_Keyword" Name="Keywords" Relationship="Tridion.ContentDelivery.Keyword_Page_Page_Keyword" ToRole="Keyword_Page" />
+        <NavigationProperty FromRole="Page_ComponentPresentation" Name="ComponentPresentations" Relationship="Tridion.ContentDelivery.Page_ComponentPresentation_ComponentPresentation_Page" ToRole="ComponentPresentation_Page" />
+        <Property Name="PagePath" Type="Edm.String" Nullable="true" />
+        <Property Name="Url" Type="Edm.String" Nullable="true" />
+        <Property Name="TemplateId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" />
+        <Property Name="ItemId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="MajorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="MinorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="OwningPublication" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CreationDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="InitialPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="LastPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Author" Type="Edm.String" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <EntityType Name="Publication">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <NavigationProperty FromRole="Publication_Page" Name="Pages" Relationship="Tridion.ContentDelivery.Publication_Page_Page_Publication" ToRole="Page_Publication" />
+        <NavigationProperty FromRole="Publication_Component" Name="Components" Relationship="Tridion.ContentDelivery.Publication_Component_Component_Publication" ToRole="Component_Publication" />
+        <NavigationProperty FromRole="Publication_PageContent" Name="PageContents" Relationship="Tridion.ContentDelivery.Publication_PageContent_PageContent_Publication" ToRole="PageContent_Publication" />
+        <NavigationProperty FromRole="Publication_Schema" Name="Schemas" Relationship="Tridion.ContentDelivery.Publication_Schema_Schema_Publication" ToRole="Schema_Publication" />
+        <NavigationProperty FromRole="Publication_Template" Name="Templates" Relationship="Tridion.ContentDelivery.Publication_Template_Template_Publication" ToRole="Template_Publication" />
+        <NavigationProperty FromRole="Publication_Keyword" Name="Keywords" Relationship="Tridion.ContentDelivery.Publication_Keyword_Keyword_Publication" ToRole="Keyword_Publication" />
+        <NavigationProperty FromRole="Publication_ComponentPresentation" Name="ComponentPresentations" Relationship="Tridion.ContentDelivery.Publication_ComponentPresentation_ComponentPresentation_Publication" ToRole="ComponentPresentation_Publication" />
+        <NavigationProperty FromRole="Publication_CustomMeta" Name="CustomMetas" Relationship="Tridion.ContentDelivery.Publication_CustomMeta_CustomMeta_Publication" ToRole="CustomMeta_Publication" />
+        <NavigationProperty FromRole="Publication_Binary" Name="Binaries" Relationship="Tridion.ContentDelivery.Publication_Binary_Binary_Publication" ToRole="Binary_Publication" />
+        <NavigationProperty FromRole="Publication_BinaryVariant" Name="BinaryVariants" Relationship="Tridion.ContentDelivery.Publication_BinaryVariant_BinaryVariant_Publication" ToRole="BinaryVariant_Publication" />
+        <NavigationProperty FromRole="Publication_StructureGroup" Name="StructureGroups" Relationship="Tridion.ContentDelivery.Publication_StructureGroup_StructureGroup_Publication" ToRole="StructureGroup_Publication" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" />
+        <Property Name="Key" Type="Edm.String" Nullable="true" />
+        <Property Name="PublicationPath" Type="Edm.String" Nullable="true" />
+        <Property Name="PublicationUrl" Type="Edm.String" Nullable="true" />
+        <Property Name="MultimediaPath" Type="Edm.String" Nullable="true" />
+        <Property Name="MultimediaUrl" Type="Edm.String" Nullable="true" />
+      </EntityType>
+      <EntityType Name="Schema">
+        <Key>
+          <PropertyRef Name="PublicationId" />
+          <PropertyRef Name="SchemaId" />
+        </Key>
+        <NavigationProperty FromRole="Schema_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Schema_Schema_Publication" ToRole="Publication_Schema" />
+        <NavigationProperty FromRole="Schema_Component" Name="Components" Relationship="Tridion.ContentDelivery.Schema_Component_Component_Schema" ToRole="Component_Schema" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SchemaId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" />
+      </EntityType>
+      <EntityType Name="Template">
+        <Key>
+          <PropertyRef Name="ItemId" />
+          <PropertyRef Name="PublicationId" />
+        </Key>
+        <NavigationProperty FromRole="Template_Publication" Name="Publication" Relationship="Tridion.ContentDelivery.Publication_Template_Template_Publication" ToRole="Publication_Template" />
+        <NavigationProperty FromRole="Template_ComponentPresentation" Name="ComponentPresentations" Relationship="Tridion.ContentDelivery.Template_ComponentPresentation_ComponentPresentation_Template" ToRole="ComponentPresentation_Template" />
+        <Property Name="TemplatePriority" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OutputFormat" Type="Edm.String" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" />
+        <Property Name="ItemId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PublicationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="MajorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="MinorVersion" Type="Edm.Int32" Nullable="true" />
+        <Property Name="OwningPublication" Type="Edm.Int32" Nullable="true" />
+        <Property Name="CreationDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="InitialPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="LastPublishDate" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Author" Type="Edm.String" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <Association Name="Binary_BinaryVariant_BinaryVariant_Binary">
+        <End Multiplicity="*" Role="BinaryVariant_Binary" Type="Tridion.ContentDelivery.BinaryVariant" />
+        <End Multiplicity="1" Role="Binary_BinaryVariant" Type="Tridion.ContentDelivery.Binary" />
+      </Association>
+      <Association Name="Component_ComponentPresentation_ComponentPresentation_Component">
+        <End Multiplicity="*" Role="ComponentPresentation_Component" Type="Tridion.ContentDelivery.ComponentPresentation" />
+        <End Multiplicity="1" Role="Component_ComponentPresentation" Type="Tridion.ContentDelivery.Component" />
+      </Association>
+      <Association Name="Component_CustomMeta_CustomMeta_Component">
+        <End Multiplicity="*" Role="CustomMeta_Component" Type="Tridion.ContentDelivery.CustomMeta" />
+        <End Multiplicity="1" Role="Component_CustomMeta" Type="Tridion.ContentDelivery.Component" />
+      </Association>
+      <Association Name="Keyword_Children_Children_Keyword">
+        <End Multiplicity="*" Role="Children_Keyword" Type="Tridion.ContentDelivery.Keyword" />
+        <End Multiplicity="1" Role="Keyword_Children" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="Keyword_Parent_Parent_Keyword">
+        <End Multiplicity="1" Role="Parent_Keyword" Type="Tridion.ContentDelivery.Keyword" />
+        <End Multiplicity="1" Role="Keyword_Parent" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="Keyword_CustomMeta_CustomMeta_Keyword">
+        <End Multiplicity="*" Role="CustomMeta_Keyword" Type="Tridion.ContentDelivery.CustomMeta" />
+        <End Multiplicity="1" Role="Keyword_CustomMeta" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="Keyword_KeywordRelation_KeywordRelation_Keyword">
+        <End Multiplicity="*" Role="KeywordRelation_Keyword" Type="Tridion.ContentDelivery.KeywordRelation" />
+        <End Multiplicity="1" Role="Keyword_KeywordRelation" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="Keyword_Component_Component_Keyword">
+        <End Multiplicity="*" Role="Component_Keyword" Type="Tridion.ContentDelivery.Component" />
+        <End Multiplicity="*" Role="Keyword_Component" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="Keyword_Page_Page_Keyword">
+        <End Multiplicity="*" Role="Page_Keyword" Type="Tridion.ContentDelivery.Page" />
+        <End Multiplicity="*" Role="Keyword_Page" Type="Tridion.ContentDelivery.Keyword" />
+      </Association>
+      <Association Name="StructureGroup_Children_Children_StructureGroup">
+        <End Multiplicity="*" Role="Children_StructureGroup" Type="Tridion.ContentDelivery.StructureGroup" />
+        <End Multiplicity="1" Role="StructureGroup_Children" Type="Tridion.ContentDelivery.StructureGroup" />
+      </Association>
+      <Association Name="StructureGroup_Parent_Parent_StructureGroup">
+        <End Multiplicity="1" Role="Parent_StructureGroup" Type="Tridion.ContentDelivery.StructureGroup" />
+        <End Multiplicity="1" Role="StructureGroup_Parent" Type="Tridion.ContentDelivery.StructureGroup" />
+      </Association>
+      <Association Name="StructureGroup_Page_Page_StructureGroup">
+        <End Multiplicity="*" Role="Page_StructureGroup" Type="Tridion.ContentDelivery.Page" />
+        <End Multiplicity="1" Role="StructureGroup_Page" Type="Tridion.ContentDelivery.StructureGroup" />
+      </Association>
+      <Association Name="StructureGroup_KeywordRelation_KeywordRelation_StructureGroup">
+        <End Multiplicity="*" Role="KeywordRelation_StructureGroup" Type="Tridion.ContentDelivery.KeywordRelation" />
+        <End Multiplicity="1" Role="StructureGroup_KeywordRelation" Type="Tridion.ContentDelivery.StructureGroup" />
+      </Association>
+      <Association Name="Page_PageContent_PageContent_Page">
+        <End Multiplicity="1" Role="PageContent_Page" Type="Tridion.ContentDelivery.PageContent" />
+        <End Multiplicity="1" Role="Page_PageContent" Type="Tridion.ContentDelivery.Page" />
+      </Association>
+      <Association Name="Page_CustomMeta_CustomMeta_Page">
+        <End Multiplicity="*" Role="CustomMeta_Page" Type="Tridion.ContentDelivery.CustomMeta" />
+        <End Multiplicity="1" Role="Page_CustomMeta" Type="Tridion.ContentDelivery.Page" />
+      </Association>
+      <Association Name="Page_ComponentPresentation_ComponentPresentation_Page">
+        <End Multiplicity="*" Role="ComponentPresentation_Page" Type="Tridion.ContentDelivery.ComponentPresentation" />
+        <End Multiplicity="*" Role="Page_ComponentPresentation" Type="Tridion.ContentDelivery.Page" />
+      </Association>
+      <Association Name="Publication_Page_Page_Publication">
+        <End Multiplicity="*" Role="Page_Publication" Type="Tridion.ContentDelivery.Page" />
+        <End Multiplicity="1" Role="Publication_Page" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_Component_Component_Publication">
+        <End Multiplicity="*" Role="Component_Publication" Type="Tridion.ContentDelivery.Component" />
+        <End Multiplicity="1" Role="Publication_Component" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_PageContent_PageContent_Publication">
+        <End Multiplicity="*" Role="PageContent_Publication" Type="Tridion.ContentDelivery.PageContent" />
+        <End Multiplicity="1" Role="Publication_PageContent" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_Schema_Schema_Publication">
+        <End Multiplicity="*" Role="Schema_Publication" Type="Tridion.ContentDelivery.Schema" />
+        <End Multiplicity="1" Role="Publication_Schema" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_Template_Template_Publication">
+        <End Multiplicity="*" Role="Template_Publication" Type="Tridion.ContentDelivery.Template" />
+        <End Multiplicity="1" Role="Publication_Template" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_Keyword_Keyword_Publication">
+        <End Multiplicity="*" Role="Keyword_Publication" Type="Tridion.ContentDelivery.Keyword" />
+        <End Multiplicity="1" Role="Publication_Keyword" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_ComponentPresentation_ComponentPresentation_Publication">
+        <End Multiplicity="*" Role="ComponentPresentation_Publication" Type="Tridion.ContentDelivery.ComponentPresentation" />
+        <End Multiplicity="1" Role="Publication_ComponentPresentation" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_CustomMeta_CustomMeta_Publication">
+        <End Multiplicity="*" Role="CustomMeta_Publication" Type="Tridion.ContentDelivery.CustomMeta" />
+        <End Multiplicity="1" Role="Publication_CustomMeta" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_Binary_Binary_Publication">
+        <End Multiplicity="*" Role="Binary_Publication" Type="Tridion.ContentDelivery.Binary" />
+        <End Multiplicity="1" Role="Publication_Binary" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_BinaryVariant_BinaryVariant_Publication">
+        <End Multiplicity="*" Role="BinaryVariant_Publication" Type="Tridion.ContentDelivery.BinaryVariant" />
+        <End Multiplicity="1" Role="Publication_BinaryVariant" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Publication_StructureGroup_StructureGroup_Publication">
+        <End Multiplicity="*" Role="StructureGroup_Publication" Type="Tridion.ContentDelivery.StructureGroup" />
+        <End Multiplicity="1" Role="Publication_StructureGroup" Type="Tridion.ContentDelivery.Publication" />
+      </Association>
+      <Association Name="Schema_Component_Component_Schema">
+        <End Multiplicity="*" Role="Component_Schema" Type="Tridion.ContentDelivery.Component" />
+        <End Multiplicity="1" Role="Schema_Component" Type="Tridion.ContentDelivery.Schema" />
+      </Association>
+      <Association Name="Template_ComponentPresentation_ComponentPresentation_Template">
+        <End Multiplicity="*" Role="ComponentPresentation_Template" Type="Tridion.ContentDelivery.ComponentPresentation" />
+        <End Multiplicity="1" Role="Template_ComponentPresentation" Type="Tridion.ContentDelivery.Template" />
+      </Association>
+      <EntityContainer m:IsDefaultEntityContainer="true" Name="ContentDeliveryService">
+        <AssociationSet Association="Tridion.ContentDelivery.Binary_BinaryVariant_BinaryVariant_Binary" Name="Binaries_BinaryVariants">
+          <End EntitySet="BinaryVariants" Role="BinaryVariant_Binary" />
+          <End EntitySet="Binaries" Role="Binary_BinaryVariant" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Component_ComponentPresentation_ComponentPresentation_Component" Name="Components_ComponentPresentations">
+          <End EntitySet="ComponentPresentations" Role="ComponentPresentation_Component" />
+          <End EntitySet="Components" Role="Component_ComponentPresentation" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Component_CustomMeta_CustomMeta_Component" Name="Components_CustomMetas">
+          <End EntitySet="CustomMetas" Role="CustomMeta_Component" />
+          <End EntitySet="Components" Role="Component_CustomMeta" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_Children_Children_Keyword" Name="Keywords_Children">
+          <End EntitySet="Keywords" Role="Children_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_Children" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_Parent_Parent_Keyword" Name="Keywords_Parent">
+          <End EntitySet="Keywords" Role="Parent_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_Parent" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_CustomMeta_CustomMeta_Keyword" Name="Keywords_CustomMetas">
+          <End EntitySet="CustomMetas" Role="CustomMeta_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_CustomMeta" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_KeywordRelation_KeywordRelation_Keyword" Name="Keywords_KeywordRelations">
+          <End EntitySet="KeywordRelations" Role="KeywordRelation_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_KeywordRelation" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_Component_Component_Keyword" Name="Keywords_Components">
+          <End EntitySet="Components" Role="Component_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_Component" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Keyword_Page_Page_Keyword" Name="Keywords_Pages">
+          <End EntitySet="Pages" Role="Page_Keyword" />
+          <End EntitySet="Keywords" Role="Keyword_Page" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.StructureGroup_Children_Children_StructureGroup" Name="StructureGroups_Children">
+          <End EntitySet="StructureGroups" Role="Children_StructureGroup" />
+          <End EntitySet="StructureGroups" Role="StructureGroup_Children" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.StructureGroup_Parent_Parent_StructureGroup" Name="StructureGroups_Parent">
+          <End EntitySet="StructureGroups" Role="Parent_StructureGroup" />
+          <End EntitySet="StructureGroups" Role="StructureGroup_Parent" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.StructureGroup_Page_Page_StructureGroup" Name="StructureGroups_Pages">
+          <End EntitySet="Pages" Role="Page_StructureGroup" />
+          <End EntitySet="StructureGroups" Role="StructureGroup_Page" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.StructureGroup_KeywordRelation_KeywordRelation_StructureGroup" Name="StructureGroups_KeywordRelations">
+          <End EntitySet="KeywordRelations" Role="KeywordRelation_StructureGroup" />
+          <End EntitySet="StructureGroups" Role="StructureGroup_KeywordRelation" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Page_PageContent_PageContent_Page" Name="Pages_PageContent">
+          <End EntitySet="PageContents" Role="PageContent_Page" />
+          <End EntitySet="Pages" Role="Page_PageContent" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Page_CustomMeta_CustomMeta_Page" Name="Pages_CustomMetas">
+          <End EntitySet="CustomMetas" Role="CustomMeta_Page" />
+          <End EntitySet="Pages" Role="Page_CustomMeta" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Page_ComponentPresentation_ComponentPresentation_Page" Name="Pages_ComponentPresentations">
+          <End EntitySet="ComponentPresentations" Role="ComponentPresentation_Page" />
+          <End EntitySet="Pages" Role="Page_ComponentPresentation" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Page_Page_Publication" Name="Publications_Pages">
+          <End EntitySet="Pages" Role="Page_Publication" />
+          <End EntitySet="Publications" Role="Publication_Page" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Component_Component_Publication" Name="Publications_Components">
+          <End EntitySet="Components" Role="Component_Publication" />
+          <End EntitySet="Publications" Role="Publication_Component" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_PageContent_PageContent_Publication" Name="Publications_PageContents">
+          <End EntitySet="PageContents" Role="PageContent_Publication" />
+          <End EntitySet="Publications" Role="Publication_PageContent" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Schema_Schema_Publication" Name="Publications_Schemas">
+          <End EntitySet="Schemas" Role="Schema_Publication" />
+          <End EntitySet="Publications" Role="Publication_Schema" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Template_Template_Publication" Name="Publications_Templates">
+          <End EntitySet="Templates" Role="Template_Publication" />
+          <End EntitySet="Publications" Role="Publication_Template" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Keyword_Keyword_Publication" Name="Publications_Keywords">
+          <End EntitySet="Keywords" Role="Keyword_Publication" />
+          <End EntitySet="Publications" Role="Publication_Keyword" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_ComponentPresentation_ComponentPresentation_Publication" Name="Publications_ComponentPresentations">
+          <End EntitySet="ComponentPresentations" Role="ComponentPresentation_Publication" />
+          <End EntitySet="Publications" Role="Publication_ComponentPresentation" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_CustomMeta_CustomMeta_Publication" Name="Publications_CustomMetas">
+          <End EntitySet="CustomMetas" Role="CustomMeta_Publication" />
+          <End EntitySet="Publications" Role="Publication_CustomMeta" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_Binary_Binary_Publication" Name="Publications_Binaries">
+          <End EntitySet="Binaries" Role="Binary_Publication" />
+          <End EntitySet="Publications" Role="Publication_Binary" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_BinaryVariant_BinaryVariant_Publication" Name="Publications_BinaryVariants">
+          <End EntitySet="BinaryVariants" Role="BinaryVariant_Publication" />
+          <End EntitySet="Publications" Role="Publication_BinaryVariant" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Publication_StructureGroup_StructureGroup_Publication" Name="Publications_StructureGroups">
+          <End EntitySet="StructureGroups" Role="StructureGroup_Publication" />
+          <End EntitySet="Publications" Role="Publication_StructureGroup" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Schema_Component_Component_Schema" Name="Schemas_Components">
+          <End EntitySet="Components" Role="Component_Schema" />
+          <End EntitySet="Schemas" Role="Schema_Component" />
+        </AssociationSet>
+        <AssociationSet Association="Tridion.ContentDelivery.Template_ComponentPresentation_ComponentPresentation_Template" Name="Templates_ComponentPresentations">
+          <End EntitySet="ComponentPresentations" Role="ComponentPresentation_Template" />
+          <End EntitySet="Templates" Role="Template_ComponentPresentation" />
+        </AssociationSet>
+        <EntitySet EntityType="Tridion.ContentDelivery.Binary" Name="Binaries" />
+        <EntitySet EntityType="Tridion.ContentDelivery.BinaryContent" Name="BinaryContents" />
+        <EntitySet EntityType="Tridion.ContentDelivery.BinaryVariant" Name="BinaryVariants" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Component" Name="Components" />
+        <EntitySet EntityType="Tridion.ContentDelivery.ComponentPresentation" Name="ComponentPresentations" />
+        <EntitySet EntityType="Tridion.ContentDelivery.CustomMeta" Name="CustomMetas" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Keyword" Name="Keywords" />
+        <EntitySet EntityType="Tridion.ContentDelivery.StructureGroup" Name="StructureGroups" />
+        <EntitySet EntityType="Tridion.ContentDelivery.KeywordRelation" Name="KeywordRelations" />
+        <EntitySet EntityType="Tridion.ContentDelivery.PageContent" Name="PageContents" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Page" Name="Pages" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Publication" Name="Publications" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Schema" Name="Schemas" />
+        <EntitySet EntityType="Tridion.ContentDelivery.Template" Name="Templates" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
