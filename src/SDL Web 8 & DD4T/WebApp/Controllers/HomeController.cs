@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Http;
 using System.Web.Mvc;
 using DD4T.ContentModel.Contracts.Configuration;
 using DD4T.ContentModel.Contracts.Logging;
@@ -49,7 +48,7 @@ namespace WebApp.Controllers
 
                 var id = $"tcm:{page.PublicationId}-{page.ItemId}-64";
 
-                return Json(id);
+                return Content(id, "application/json");
             }
             catch (Exception ex)
             {
@@ -73,10 +72,11 @@ namespace WebApp.Controllers
 
                 var page = pages.SingleOrDefault();
 
-                return Json(page.Content);
+                return Content(page.Content, "application/json");
             }
             catch (Exception ex)
             {
+                LoggerService.Error(ex.Message);
                 throw;
             }
         }
