@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using CMS.Delivery.Providers;
+using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using CMS.Delivery.Models;
 
 namespace CMS.Delivery
 {
@@ -12,10 +14,10 @@ namespace CMS.Delivery
         bool TryResolveCompositionId(string uri, IContext context, out Guid id);
     }
 
-    public interface ICompositionProvider : IProvider
-    {
-        bool TryGetComposition(Guid id, IContext context, out IComposition composition);
-    }
+    //public interface ICompositionProvider : IProvider
+    //{
+    //    bool TryGetComposition(Guid id, IContext context, out IComposition composition);
+    //}
 
     public class DefaultTemplate : ITemplate
     {
@@ -37,9 +39,11 @@ namespace CMS.Delivery
 
         [JsonConverter(typeof(ConcreteTypeConverter<List<DefaultRendering>>))]
         public IEnumerable<IRendering> Renderings { get; set; }
+
+        public string Data { get; set; }
     }
 
-    public class DefaultComposition : IComposition
+    public class DefaultLayout : ILayout
     {
         public Guid Id { get; set; }
 
@@ -50,40 +54,33 @@ namespace CMS.Delivery
         public IEnumerable<IRendering> Renderings { get; set; }
     }
 
-    public class DefaultCompositionProviderResolver : ICompositionProvider, ICompositionResolver
+    public class DefaultLayoutProvider : ILayoutProvider
     {
-        public Guid Id => new Guid("00804bcd-d975-4fb6-aeba-7e7745f33996");
+        protected IHostingEnvironment HostingEnvironment { get; set; }
 
-        protected IHostingEnvironment HostingEnvironment { get; }
-
-        public DefaultCompositionProviderResolver(IHostingEnvironment hostingEnvironment)
+        public DefaultLayoutProvider(IHostingEnvironment hostingEnvironment)
         {
             HostingEnvironment = hostingEnvironment;
         }
 
-        public bool TryGetComposition(Guid id, IContext context, out IComposition composition)
+        public ILayout GetLayoutById(Guid id, IContext context)
         {
-            try
+            var jsonPath = HostingEnvironment.WebRootPath + "/data/composition/" + id + ".json";
+
+            var json = System.IO.File.ReadAllText(jsonPath);
+
+            var settings = new JsonSerializerSettings()
             {
-                var jsonPath = HostingEnvironment.WebRootPath + "/data/composition/" + id + ".json";
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
 
-                var json = System.IO.File.ReadAllText(jsonPath);
-
-                var settings = new JsonSerializerSettings()
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                };
-
-                composition = JsonConvert.DeserializeObject<DefaultComposition>(json, settings);
-
-                return true;
-            }
-            catch(Exception ex)
-            {
-                composition = null;
-                return false;
-            }
+            return JsonConvert.DeserializeObject<DefaultLayout>(json, settings);
         }
+    }
+
+    public class DefaultCompositionResolver : ICompositionResolver
+    {
+        public Guid Id => new Guid("00804bcd-d975-4fb6-aeba-7e7745f33996");
 
         public bool TryResolveCompositionId(string uri, IContext context, out Guid id)
         {

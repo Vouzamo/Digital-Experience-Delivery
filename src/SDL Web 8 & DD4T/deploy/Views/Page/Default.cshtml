@@ -1,0 +1,22 @@
+﻿@model DD4T.ContentModel.IPage
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @if (!Model.ComponentPresentations.Any())
+    {
+
+    }
+    else
+    {
+        foreach (var cp in Model.ComponentPresentations)
+        {
+            var controller = cp.ComponentTemplate.MetadataFields["controller"].Value;
+            var action = cp.ComponentTemplate.MetadataFields["action"].Value;
+
+            @Html.Action(action, controller, new { cp })
+        }
+    }
+</div>

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using CMS.Delivery.Providers;
+using CMS.Delivery.Web.Providers;
+using CMS.Delivery.Providers.DD4T;
 
 namespace CMS.Delivery.Web
 {
@@ -26,10 +29,14 @@ namespace CMS.Delivery.Web
             // Add framework services.
             services.AddMvc();
 
+            services.AddSingleton<IIdentityManager, IdentityManager>();
             services.AddTransient<IContextProvider, DefaultContextProvider>();
-            services.AddSingleton<ICompositionProvider, DefaultCompositionProviderResolver>();
-            services.AddSingleton<ICompositionResolver, DefaultCompositionProviderResolver>();
-            services.AddSingleton<IComponentProvider, DefaultComponentProvider>();
+
+            services.AddSingleton<ICompositionResolver, DD4TCompositionResolverProvider>();
+            services.AddSingleton<ICompositionProvider, DD4TCompositionResolverProvider>();
+
+            //services.AddSingleton<ILayoutProvider, DefaultLayoutProvider>();
+            //services.AddSingleton<IContentProvider, DefaultContentProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +65,9 @@ namespace CMS.Delivery.Web
                     defaults: new { controller = "Home", action = "Index" }
                 );
             });
+
+            var identityManager = app.ApplicationServices.GetService<IIdentityManager>();
+            identityManager.Seed();
         }
     }
 }

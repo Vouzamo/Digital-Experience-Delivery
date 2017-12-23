@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CMS.Delivery
 {
-    public interface IComposition
+    public interface IComposition : IHasTemplate, IHasEmbeddedRenderings
     {
         Guid Id { get; }
-        ITemplate Template { get; }
-        IEnumerable<IRendering> Renderings { get; }
     }
 }
