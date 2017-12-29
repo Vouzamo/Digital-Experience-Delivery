@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Common", "DVDA.Common\DVDA.Common.csproj", "{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Core", "DVDA.Core\DVDA.Core.csproj", "{FF9499D3-0311-4A77-8F13-3C24403838F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Contracts", "DVDA.Contracts\DVDA.Contracts.csproj", "{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transform MEF Plugins", "Transform MEF Plugins", "{68DF7295-D837-4F46-8FAF-B9DFADE96D56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL.DD4T.Transform.Plugin", "SDL.DD4T.Transform.Plugin\SDL.DD4T.Transform.Plugin.csproj", "{158D7473-532B-41BF-9BCC-A784996976D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debugging-Testing", "Debugging-Testing", "{D56D8B16-1FA2-46CA-81B6-A0284A218CB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockServiceRunner", "MockServiceRunner\MockServiceRunner.csproj", "{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9499D3-0311-4A77-8F13-3C24403838F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9499D3-0311-4A77-8F13-3C24403838F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9499D3-0311-4A77-8F13-3C24403838F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9499D3-0311-4A77-8F13-3C24403838F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{158D7473-532B-41BF-9BCC-A784996976D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{158D7473-532B-41BF-9BCC-A784996976D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{158D7473-532B-41BF-9BCC-A784996976D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{158D7473-532B-41BF-9BCC-A784996976D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{158D7473-532B-41BF-9BCC-A784996976D4} = {68DF7295-D837-4F46-8FAF-B9DFADE96D56}
+		{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D} = {D56D8B16-1FA2-46CA-81B6-A0284A218CB2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFDB041B-6A20-4862-AA63-CDEED2423CD0}
+	EndGlobalSection
+EndGlobal
