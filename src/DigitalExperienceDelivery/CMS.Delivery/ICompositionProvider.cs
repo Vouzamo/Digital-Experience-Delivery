@@ -63,9 +63,9 @@ namespace CMS.Delivery
             HostingEnvironment = hostingEnvironment;
         }
 
-        public ILayout GetLayoutById(Guid id, IContext context)
+        public ILayout GetLayout(IContext context)
         {
-            var jsonPath = HostingEnvironment.WebRootPath + "/data/composition/" + id + ".json";
+            var jsonPath = HostingEnvironment.WebRootPath + "/data/composition/" + context.Uri + ".json";
 
             var json = System.IO.File.ReadAllText(jsonPath);
 

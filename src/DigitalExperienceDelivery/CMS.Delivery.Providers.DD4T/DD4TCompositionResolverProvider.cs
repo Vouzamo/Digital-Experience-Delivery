@@ -5,56 +5,39 @@ using IComponent = DD4T.ContentModel.IComponent;
 using Refit;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using DD4T.Serialization;
 
 namespace CMS.Delivery.Providers.DD4T
 {
-    public class DD4TCompositionResolverProvider : ICompositionResolver, ICompositionProvider
+    public class DD4TCompositionProvider : ICompositionProvider
     {
         public Guid Id => new Guid("3253b2df-9b21-4a08-b4a3-969f257694a0");
 
         private IIdentityManager IdentityManager { get; set; }
         private IDD4TContract Client { get; set; }
 
-        public DD4TCompositionResolverProvider(IIdentityManager identityManager)
+        public DD4TCompositionProvider(IIdentityManager identityManager)
         {
             IdentityManager = identityManager;
             Client = RestService.For<IDD4TContract>("http://dd4t.samplesite.com");
         }
 
-        public bool TryResolveCompositionId(string uri, IContext context, out Guid id)
+        public IComposition GetComposition(IContext context)
         {
             try
             {
-                uri = uri ?? string.Empty;
+                var pageJson = Client.GetPage(context).Result;
 
-                var externalId = Client.FindPageId(uri, context).Result;
+                var serializer = new JSONSerializerService();
 
-                id = IdentityManager.ToFrameworkId(this, externalId);
+                var page = serializer.Deserialize<Page>(pageJson);
 
-                return id != Guid.Empty;
+                return ConvertPageToComposition(page);
             }
             catch(Exception ex)
             {
-                id = Guid.Empty;
-                return false;
+                throw new KeyNotFoundException("Couldn't find the requested composition");
             }
-        }
-
-        public IComposition GetCompositionById(Guid id, IContext context)
-        {
-            var pageId = IdentityManager.FromFrameworkId(this, id);
-
-            var pageJson = Client.GetPageById(pageId, context).Result;
-
-            var serializer = new JSONSerializerService();
-
-            var page = serializer.Deserialize<Page>(pageJson);
-
-            return ConvertPageToComposition(page);
-
-            throw new KeyNotFoundException("Couldn't find the requested composition");
         }
 
         private IComposition ConvertPageToComposition(IPage page)

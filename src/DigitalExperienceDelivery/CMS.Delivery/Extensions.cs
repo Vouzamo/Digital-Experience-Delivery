@@ -9,16 +9,16 @@ namespace CMS.Delivery
 {
     public static class Extensions
     {
-        public static bool TryGetLayoutById(this ILayoutProvider provider, Guid id, IContext context, out ILayout layout)
+        public static bool TryGetLayout(this ILayoutProvider provider, IContext context, out ILayout layout)
         {
-            layout = provider.GetLayoutById(id, context);
+            layout = provider.GetLayout(context);
 
             return layout != null;
         }
 
-        public static bool TryGetCompositionById(this ICompositionProvider provider, Guid id, IContext context, out IComposition composition)
+        public static bool TryGetComposition(this ICompositionProvider provider, IContext context, out IComposition composition)
         {
-            composition = provider.GetCompositionById(id, context);
+            composition = provider.GetComposition(context);
 
             return composition != null;
         }

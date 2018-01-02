@@ -8,6 +8,6 @@ namespace CMS.Delivery.Providers
     /// </summary>
     public interface ILayoutProvider
     {
-        ILayout GetLayoutById(Guid id, IContext context);
+        ILayout GetLayout(IContext context);
     }
 }

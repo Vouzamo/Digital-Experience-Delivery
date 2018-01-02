@@ -36,9 +36,10 @@ namespace CMS.Delivery.Web
             services.AddSingleton<IIdentityManager, IdentityManager>();
             services.AddTransient<IContextProvider, DefaultContextProvider>();
 
-            services.AddSingleton<ICompositionResolver, DD4TCompositionResolverProvider>();
-            services.AddSingleton<ICompositionProvider, DD4TCompositionResolverProvider>();
+            services.AddSingleton<ICompositionProvider, DD4TCompositionProvider>();
 
+            //services.AddSingleton<ICompositionResolver, DefaultCompositionResolver>();
+            //services.AddSingleton<ICompositionProvider, DistributedCompositionProvider>();
             //services.AddSingleton<ILayoutProvider, DefaultLayoutProvider>();
             //services.AddSingleton<IContentProvider, DefaultContentProvider>();
         }

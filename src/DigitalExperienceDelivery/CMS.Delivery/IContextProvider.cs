@@ -16,7 +16,12 @@ namespace CMS.Delivery
         int Height { get; }
     }
 
-    public interface IContext: ILocalizationContext, IDeviceContext
+    public interface IRequestContext
+    {
+        string Uri { get; }
+    }
+
+    public interface IContext: ILocalizationContext, IDeviceContext, IRequestContext
     {
         Guid Id { get; }
     }
@@ -34,6 +39,7 @@ namespace CMS.Delivery
         public string UserAgent { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public string Uri { get; set; }
     }
 
     public class DefaultContextProvider : IContextProvider
@@ -49,7 +55,8 @@ namespace CMS.Delivery
                 CountryCode = "GB",
                 UserAgent = string.Empty,
                 Width = 800,
-                Height = 600
+                Height = 600,
+                Uri = request.Path
             };
         }
     }

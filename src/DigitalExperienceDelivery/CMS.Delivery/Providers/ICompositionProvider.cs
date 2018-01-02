@@ -7,6 +7,6 @@ namespace CMS.Delivery.Providers
     /// </summary>
     public interface ICompositionProvider : IProvider
     {
-        IComposition GetCompositionById(Guid id, IContext context);
+        IComposition GetComposition(IContext context);
     }
 }

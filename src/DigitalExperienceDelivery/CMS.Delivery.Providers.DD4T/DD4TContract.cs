@@ -6,10 +6,7 @@ namespace CMS.Delivery.Providers.DD4T
 {
     public interface IDD4TContract
     {
-        [Post("/findPageId/{uri}")]
-        Task<string> FindPageId(string uri, [Body] IContext context);
-
-        [Post("/getPageById/{pageId}")]
-        Task<string> GetPageById(string pageId, [Body] IContext context);
+        [Post("/getPage")]
+        Task<string> GetPage([Body] IContext context);
     }
 }

@@ -50,9 +50,9 @@ namespace CMS.Delivery.Web.Providers
             ContentProvider = contentProvider;
         }
 
-        public IComposition GetCompositionById(Guid id, IContext context)
+        public IComposition GetComposition(IContext context)
         {
-            if (LayoutProvider.TryGetLayoutById(id, context, out ILayout layout))
+            if (LayoutProvider.TryGetLayout(context, out ILayout layout))
             {
                 var embeddedRenderings = new List<IEmbeddedRendering>();
 
