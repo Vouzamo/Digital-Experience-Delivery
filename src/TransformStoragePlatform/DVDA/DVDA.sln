@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Common", "DVDA.Common\DVDA.Common.csproj", "{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Data.Common", "DVDA.Common\DVDA.Data.Common.csproj", "{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Data.Core", "DVDA.Core\DVDA.Data.Core.csproj", "{FF9499D3-0311-4A77-8F13-3C24403838F5}"
 EndProject
