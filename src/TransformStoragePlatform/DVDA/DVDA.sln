@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Common", "DVDA.Common\DVDA.Common.csproj", "{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Common", "DVDA.Common\DVDA.Common.csproj", "{A469CFE7-7153-4BD5-8355-AC44D7BE28FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Core", "DVDA.Core\DVDA.Core.csproj", "{FF9499D3-0311-4A77-8F13-3C24403838F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Data.Core", "DVDA.Core\DVDA.Data.Core.csproj", "{FF9499D3-0311-4A77-8F13-3C24403838F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVDA.Contracts", "DVDA.Contracts\DVDA.Contracts.csproj", "{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVDA.Data.Contracts", "DVDA.Contracts\DVDA.Data.Contracts.csproj", "{E5F1DE1E-61E1-4AF1-89DB-3C0914C338C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transform MEF Plugins", "Transform MEF Plugins", "{68DF7295-D837-4F46-8FAF-B9DFADE96D56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL.DD4T.Transform.Plugin", "SDL.DD4T.Transform.Plugin\SDL.DD4T.Transform.Plugin.csproj", "{158D7473-532B-41BF-9BCC-A784996976D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDL.DD4T.Transform.Plugin", "SDL.DD4T.Transform.Plugin\SDL.DD4T.Transform.Plugin.csproj", "{158D7473-532B-41BF-9BCC-A784996976D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debugging-Testing", "Debugging-Testing", "{D56D8B16-1FA2-46CA-81B6-A0284A218CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockServiceRunner", "MockServiceRunner\MockServiceRunner.csproj", "{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockServiceRunner", "MockServiceRunner\MockServiceRunner.csproj", "{2F4BD126-D155-45D1-9B17-4BCEEF3B5D2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

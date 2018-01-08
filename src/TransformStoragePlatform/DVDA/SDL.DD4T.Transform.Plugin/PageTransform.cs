@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Text;
 using DD4T.ContentModel;
-using DVDA.Contracts.Plugins;
-using IItem = DVDA.Contracts.Transform.IItem;
+using DVDA.Data.Contracts.Plugins;
+using IItem = DVDA.Data.Contracts.Transform.IItem;
 
 namespace SDL.DD4T.Transform.Plugin
 {

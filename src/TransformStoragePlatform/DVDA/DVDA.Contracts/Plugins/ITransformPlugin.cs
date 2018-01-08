@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DVDA.Contracts.Transform;
+﻿using DVDA.Data.Contracts.Transform;
 
-namespace DVDA.Contracts.Plugins
+namespace DVDA.Data.Contracts.Plugins
 {
     public interface ITransformPlugin<T>
     {

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>DVDA.Data.Common</AssemblyName>
+    <RootNamespace>DVDA.Data.Common</RootNamespace>
   </PropertyGroup>
 
 </Project>

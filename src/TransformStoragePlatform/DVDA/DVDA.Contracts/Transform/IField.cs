@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DVDA.Contracts.Transform
+﻿namespace DVDA.Data.Contracts.Transform
 {
-    public interface IField
+    public interface IField<T> : IFieldBase
     {
+        FieldTypes FieldType { get; }
+        string FieldReference { get; set; }
+        T FieldValue { get; set; }
+        
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace DVDA.Data.Contracts.Transform
 {
-    public interface IItem : IItemBase
+    public interface IRenderingItem : IItemBase
     {
         IEnumerable<IFieldBase> Fields { get; set; }
         IEnumerable<IFieldBase> MetadataFields { get; set; }

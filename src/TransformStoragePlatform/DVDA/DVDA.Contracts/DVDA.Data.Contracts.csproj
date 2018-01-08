@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>DVDA.Data.Contracts</AssemblyName>
+    <RootNamespace>DVDA.Data.Contracts</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

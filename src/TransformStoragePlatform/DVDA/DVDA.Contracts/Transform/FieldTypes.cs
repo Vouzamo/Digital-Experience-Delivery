@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace DVDA.Contracts.Transform
+namespace DVDA.Data.Contracts.Transform
 {
     public enum FieldTypes
     {
@@ -22,8 +20,10 @@ namespace DVDA.Contracts.Transform
         [Display(Name = "NumberField")]
         Number = 7,
         [Display(Name = "SingleListField")]
-        Array = 8,
-        [Display(Name = "ItemCollectionField")]
-        ItemCollection = 9
+        StringList = 8,
+        [Display(Name = "ObjectCollectionField")]
+        ObjectCollection = 9,
+        [Display(Name = "DictionaryField")]
+        Dictionary = 10
     }
 }
