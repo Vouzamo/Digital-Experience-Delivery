@@ -6,7 +6,9 @@ namespace DVDA.Data.Contracts.Transform
 {
     public interface IRenderingItem : IItemBase
     {
-        IEnumerable<IFieldBase> Fields { get; set; }
-        IEnumerable<IFieldBase> MetadataFields { get; set; }
+        IList<IItem> Items { get; set; }
+        IList<IRenderingItem> ChildRenderings { get; set; }
+        IList<IFieldBase> Fields { get; set; }
+        IList<IFieldBase> MetadataFields { get; set; }
     }
 }

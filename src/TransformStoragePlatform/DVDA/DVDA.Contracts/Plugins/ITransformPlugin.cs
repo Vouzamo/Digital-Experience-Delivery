@@ -6,7 +6,8 @@ namespace DVDA.Data.Contracts.Plugins
     {
         string Id { get; }
         string Name { get; }
-        IItem Transform(T sourceData);
-
+        IItem TransformItem(T sourceData);
+        IRenderingItem TransformRendering(T sourceData);
+        TransformType TransformType { get; set; }
     }
 }

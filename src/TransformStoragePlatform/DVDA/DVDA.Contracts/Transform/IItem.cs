@@ -4,7 +4,7 @@ namespace DVDA.Data.Contracts.Transform
 {
     public interface IItem : IItemBase
     {
-        IEnumerable<IFieldBase> Fields { get; set; }
-        IEnumerable<IFieldBase> MetadataFields { get; set; }
+        IList<IFieldBase> Fields { get; set; }
+        IList<IFieldBase> MetadataFields { get; set; }
     }
 }

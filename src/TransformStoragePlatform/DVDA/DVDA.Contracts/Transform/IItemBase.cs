@@ -5,7 +5,8 @@ namespace DVDA.Data.Contracts.Transform
 {
     public interface IItemBase
     {
-        string FieldIdentifier { get; set; }
+        string Identifier { get; set; }
         Dictionary<string, Object> ExtendedProperties { get; set; }
+        Dictionary<string, string> Tagging { get; set; }
     }
 }

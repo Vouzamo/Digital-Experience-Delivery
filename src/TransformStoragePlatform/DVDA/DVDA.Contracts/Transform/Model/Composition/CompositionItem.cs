@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DVDA.Data.Contracts.Transform.Model.Item
+namespace DVDA.Data.Contracts.Transform.Model.Composition
 {
-    public class Item : IItem
+    public class CompositionItem : ICompositionItem
     {
         public string Identifier { get; set; }
         public Dictionary<string, object> ExtendedProperties { get; set; }
         public Dictionary<string, string> Tagging { get; set; }
-        public IList<IFieldBase> Fields { get; set; }
-        public IList<IFieldBase> MetadataFields { get; set; }
+        public IItem Content { get; set; }
+        public IRenderingItem Presentation { get; set; }
     }
 }

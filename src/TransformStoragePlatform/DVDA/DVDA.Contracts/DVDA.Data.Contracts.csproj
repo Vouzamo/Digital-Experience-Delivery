@@ -6,8 +6,4 @@
     <RootNamespace>DVDA.Data.Contracts</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Transform\Model\Rendering\" />
-  </ItemGroup>
-
 </Project>
