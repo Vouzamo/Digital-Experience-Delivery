@@ -54,7 +54,7 @@ namespace CMS.Delivery
                 LanguageCode = "en",
                 CountryCode = "GB",
                 UserAgent = string.Empty,
-                Width = 800,
+                Width = 200,
                 Height = 600,
                 Uri = request.Path
             };

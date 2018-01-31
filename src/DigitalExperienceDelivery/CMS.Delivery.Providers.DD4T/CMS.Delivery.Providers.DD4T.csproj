@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DD4T.Model" Version="2.2.1" />
+    <PackageReference Include="DD4T.Model" Version="2.2.2" />
     <PackageReference Include="refit" Version="4.0.1" />
   </ItemGroup>
 

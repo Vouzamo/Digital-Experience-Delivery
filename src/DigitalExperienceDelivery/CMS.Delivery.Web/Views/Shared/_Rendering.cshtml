@@ -1,8 +1,7 @@
 ﻿@model IEmbeddedRendering
 
-@{ 
-    var template = Model.Template.Data<RenderingTemplateModel>();
-}
-
 <!-- Rendering component @Model.Content.Id with template @Model.Template.Id -->
-@await Component.InvokeAsync(template.ViewComponent, Model)
+@if (Model.Template.TryData<RenderingTemplateModel>(out RenderingTemplateModel template))
+{
+    await Component.InvokeAsync(template.ViewComponent, Model);
+}

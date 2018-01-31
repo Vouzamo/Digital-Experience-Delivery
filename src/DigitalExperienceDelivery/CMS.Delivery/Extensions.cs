@@ -3,7 +3,6 @@ using CMS.Delivery.Providers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
-using System.Collections.Generic;
 
 namespace CMS.Delivery
 {
@@ -38,6 +37,13 @@ namespace CMS.Delivery
             };
 
             return JsonConvert.DeserializeObject<T>(subject.Data, settings);
+        }
+
+        public static bool TryData<T>(this IHasData subject, out T data)
+        {
+            data = subject.Data<T>();
+
+            return data != null;
         }
 
         public static T Data<T>(this IHasData subject, IEmbeddedRendering rendering) where T : IComponentModel
